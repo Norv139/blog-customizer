@@ -4,7 +4,7 @@ type UseOutsideClickClose = {
 	isOpen: boolean;
 	onChange: (newValue: boolean) => void;
 	onClose?: () => void;
-	rootRef: React.RefObject<HTMLElement>;
+	rootRef: React.RefObject<HTMLDivElement>;
 };
 
 export const useOutsideClickClose = ({
@@ -22,10 +22,10 @@ export const useOutsideClickClose = ({
 			}
 		};
 
-		window.addEventListener('mousedown', handleClick);
+		window.addEventListener('click', handleClick);
 
 		return () => {
-			window.removeEventListener('mousedown', handleClick);
+			window.removeEventListener('click', handleClick);
 		};
 	}, [onClose, onChange, isOpen]);
 };
